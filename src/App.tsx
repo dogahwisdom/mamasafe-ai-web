@@ -5,19 +5,19 @@ import PrivacyPolicy from './PrivacyPolicy';
 import { HeroAnimation } from './HeroAnimation';
 import { ClinicAnimation } from './ClinicAnimation';
 import { PharmacyAnimation } from './PharmacyAnimation';
-import { 
-  Check, 
-  ChevronRight, 
-  Menu, 
-  X, 
-  Activity, 
-  Users, 
-  Calendar, 
-  MessageSquare, 
-  ShieldCheck, 
-  BarChart3, 
-  Stethoscope, 
-  Pill, 
+import {
+  Check,
+  ChevronRight,
+  Menu,
+  X,
+  Activity,
+  Users,
+  Calendar,
+  MessageSquare,
+  ShieldCheck,
+  BarChart3,
+  Stethoscope,
+  Pill,
   LayoutDashboard,
   ArrowRight,
   Linkedin,
@@ -27,21 +27,21 @@ import {
 
 // --- Components ---
 
-const Button = ({ 
-  children, 
-  variant = 'primary', 
-  href, 
+const Button = ({
+  children,
+  variant = 'primary',
+  href,
   className = '',
-  ...props 
-}: { 
-  children: React.ReactNode; 
-  variant?: 'primary' | 'secondary' | 'outline' | 'text'; 
-  href?: string; 
+  ...props
+}: {
+  children: React.ReactNode;
+  variant?: 'primary' | 'secondary' | 'outline' | 'text';
+  href?: string;
   className?: string;
   [key: string]: any;
 }) => {
   const baseStyles = "inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-medium transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none";
-  
+
   const variants = {
     primary: "bg-[#0f172a] text-white hover:bg-[#1e293b] hover:scale-[1.02] active:scale-[0.98] shadow-lg shadow-slate-900/10",
     secondary: "bg-white text-[#0f172a] border border-slate-200 hover:bg-slate-50 hover:border-slate-300 shadow-sm",
@@ -50,10 +50,10 @@ const Button = ({
   };
 
   const Component = href ? 'a' : 'button';
-  
+
   return (
-    <Component 
-      href={href} 
+    <Component
+      href={href}
       className={`${baseStyles} ${variants[variant]} ${className}`}
       {...props}
     >
@@ -111,31 +111,31 @@ export default function App() {
 
   if (currentView === 'terms') {
     return (
-      <TermsOfService 
+      <TermsOfService
         onBack={() => {
           setCurrentView('home');
           window.scrollTo(0, 0);
-        }} 
+        }}
       />
     );
   }
 
   if (currentView === 'privacy') {
     return (
-      <PrivacyPolicy 
+      <PrivacyPolicy
         onBack={() => {
           setCurrentView('home');
           window.scrollTo(0, 0);
-        }} 
+        }}
       />
     );
   }
 
   return (
     <div className="min-h-screen font-sans selection:bg-indigo-100 selection:text-indigo-900">
-      
+
       {/* --- Navigation --- */}
-      <motion.nav 
+      <motion.nav
         className="fixed top-0 left-0 right-0 z-50 glass-nav"
       >
         <div className="max-w-[1400px] mx-auto px-6 h-16 flex items-center justify-between">
@@ -170,16 +170,16 @@ export default function App() {
 
         {/* Mobile Nav */}
         {isMenuOpen && (
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             className="md:hidden bg-white border-b border-slate-100 px-6 py-4 shadow-xl"
           >
             <div className="flex flex-col gap-4">
               {navLinks.map(link => (
-                <a 
-                  key={link.name} 
-                  href={link.href} 
+                <a
+                  key={link.name}
+                  href={link.href}
                   className="text-base font-medium text-slate-600 py-2"
                   onClick={() => setIsMenuOpen(false)}
                 >
@@ -217,7 +217,7 @@ export default function App() {
               </Button>
             </div>
           </FadeIn>
-          
+
           <FadeIn delay={0.3} className="relative max-w-5xl mx-auto">
             <HeroAnimation />
             {/* Background Glow */}
@@ -509,7 +509,7 @@ export default function App() {
                 The calm, intelligent control center for modern clinics and pharmacies.
               </p>
             </div>
-            
+
             <div className="grid grid-cols-2 md:grid-cols-3 gap-12">
               <div>
                 <h4 className="font-semibold text-slate-900 mb-4">Product</h4>
@@ -526,26 +526,19 @@ export default function App() {
                   <li><a href="#" className="hover:text-slate-900">About</a></li>
                   <li><a href="#" className="hover:text-slate-900">Contact</a></li>
                   <li>
-                    <button 
-                      onClick={() => {
-                        setCurrentView('privacy');
-                        window.scrollTo(0, 0);
-                      }} 
-                      className="hover:text-slate-900 text-left"
-                    >
+                    <a href="/privacy.html" className="hover:text-slate-900 text-left">
                       Privacy Policy
-                    </button>
+                    </a>
                   </li>
                   <li>
-                    <button 
-                      onClick={() => {
-                        setCurrentView('terms');
-                        window.scrollTo(0, 0);
-                      }} 
-                      className="hover:text-slate-900 text-left"
-                    >
+                    <a href="/terms.html" className="hover:text-slate-900 text-left">
                       Terms of Service
-                    </button>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/deletion.html" className="hover:text-slate-900 text-left">
+                      Data Deletion
+                    </a>
                   </li>
                 </ul>
               </div>
@@ -565,13 +558,13 @@ export default function App() {
               </div>
             </div>
           </div>
-          
+
           <div className="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-slate-200 gap-4">
             <p className="text-sm text-slate-400">© 2026 MamaSafe AI. All rights reserved.</p>
             <div className="flex items-center gap-6">
-               <a href="https://mamasafeai.netlify.app/" className="text-sm font-medium text-indigo-600 hover:text-indigo-800 flex items-center gap-1">
-                 Get Started <ArrowRight className="w-4 h-4" />
-               </a>
+              <a href="https://mamasafeai.netlify.app/" className="text-sm font-medium text-indigo-600 hover:text-indigo-800 flex items-center gap-1">
+                Get Started <ArrowRight className="w-4 h-4" />
+              </a>
             </div>
           </div>
         </div>
